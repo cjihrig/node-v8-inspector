@@ -1,6 +1,6 @@
 {
   "name": "Node.js V8 Inspector",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "manifest_version": 2,
   "description": "Extension for launching V8 Inspector for Node.js debugging",
   "author": "Continuation Labs <contact@continuation.io> (http://continuation.io/)",
