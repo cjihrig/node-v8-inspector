@@ -2,16 +2,114 @@
 <html>
   <head>
     <title>Node.js V8 Inspector</title>
-    <script src="src.js"></script>
+    <style type="text/css">
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        min-width: 200px;
+        font-size: 18px;
+      }
+      input[type="number"] {
+        display: block;
+        margin: 0;
+        font-family: sans-serif;
+        font-size: 18px;
+        appearance: none;
+        box-shadow: none;
+        border-radius: none;
+      }
+      input[type="number"]:focus {
+        outline: none;
+      }
+      input[type=number]::-webkit-inner-spin-button,
+      input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      label {
+        margin-right: 15px;
+        font-size: 20px;
+      }
+      #container {
+        margin: 20px auto;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-content: flex-start;
+        align-items: stretch;
+        max-width: 800px;
+      }
+      #launch {
+        background: #3498db;
+        background-image: linear-gradient(to bottom, #3498db, #2980b9);
+        box-shadow: 0px 1px 3px #666666;
+        color: #ffffff;
+        font-size: 20px;
+        padding: 10px 20px 10px 20px;
+        text-decoration: none;
+        text-align: center;
+        cursor: pointer;
+      }
+
+      #launch:hover {
+        background: #3cb0fd;
+        background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+        text-decoration: none;
+      }
+
+      #port {
+        padding: 10px;
+        border: solid 5px #c9c9c9;
+        transition: border 0.3s;
+        flex: 1 1 auto;
+      }
+      #port:focus,
+      #port.focus {
+        border: solid 5px #969696;
+      }
+      #portForm {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-content: stretch;
+        align-items: center;
+      }
+      #error {
+        color: #a94442;
+        background-color: #f2dede;
+        border-color: #ebcccc;
+        padding: 15px;
+        margin-bottom: 1rem;
+        border: 1px solid transparent;
+        border-radius: .25rem;
+        display: none;
+        flex: 1 1 auto;
+      }
+
+      .flexRow {
+        order: 0;
+        flex: 0 1 auto;
+        align-self: auto;
+        margin: 5px;
+      }
+    </style>
   </head>
-  <body style="min-width:200px;">
-    <button id="launch" style="width:100%;">
-      <strong>Launch V8 Inspector</strong>
-    </button>
-    <div style="clear:both;">
-      <label for="port">Port:</label>
-      <input type="text" id="port" value="5858" />
+  <body>
+    <div id="container">
+      <div class="flexRow" id="launch">
+        <strong>Launch V8 Inspector</strong>
+      </div>
+      <form id="portForm" class="flexRow">
+        <label for="port">Port:</label>
+        <input type="number" id="port" value="5858" autocomplete="off" placeholder="5858" />
+      </form>
+      <div id="error" class="flexRow"></div>
     </div>
-    <div id="msg"></div>
+    <script src="src.js"></script>
   </body>
 </html>
