@@ -1,3 +1,5 @@
+![node-v8-inspector](https://github.com/continuationlabs/node-v8-inspector/raw/master/logo-128.png)
+
 # node-v8-inspector
 
 Chrome extension for launching V8 Inspector for Node.js debugging.
