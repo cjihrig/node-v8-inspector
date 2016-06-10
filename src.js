@@ -1,9 +1,11 @@
 'use strict';
 
+const defaultPort = 9229;
+
 document.addEventListener('DOMContentLoaded', function onLoad() {
 
   launch.addEventListener('click', function onClick() {
-    const portValue = +port.value || 5858;
+    const portValue = +port.value || defaultPort;
     const jsonUrl = `http://localhost:${portValue}/json/list`;
     error.style.display = 'none';
     fetch(jsonUrl)
