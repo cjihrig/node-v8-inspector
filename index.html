@@ -6,11 +6,13 @@
       * {
         box-sizing: border-box;
       }
+
       body {
-        min-width: 200px;
+        min-width: 300px;
         font-size: 18px;
       }
-      input[type="number"] {
+
+      input {
         display: block;
         margin: 0;
         font-family: sans-serif;
@@ -18,19 +20,23 @@
         appearance: none;
         box-shadow: none;
         border-radius: none;
+        width: 75%;
       }
-      input[type="number"]:focus {
+      input:focus {
         outline: none;
       }
-      input[type=number]::-webkit-inner-spin-button,
-      input[type=number]::-webkit-outer-spin-button {
+      input::-webkit-inner-spin-button,
+      input::-webkit-outer-spin-button {
         -webkit-appearance: none;
         margin: 0;
       }
+
       label {
         margin-right: 15px;
         font-size: 20px;
+        width: 25%;
       }
+
       #container {
         margin: 20px auto;
         border: 1px solid rgba(0, 0, 0, 0.15);
@@ -43,6 +49,7 @@
         align-items: stretch;
         max-width: 800px;
       }
+
       #launch {
         background: #3498db;
         background-image: linear-gradient(to bottom, #3498db, #2980b9);
@@ -54,31 +61,32 @@
         text-align: center;
         cursor: pointer;
       }
-
       #launch:hover {
         background: #3cb0fd;
         background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
         text-decoration: none;
       }
 
-      #port {
+      .field {
         padding: 10px;
         border: solid 5px #c9c9c9;
         transition: border 0.3s;
         flex: 1 1 auto;
       }
-      #port:focus,
-      #port.focus {
+      .field:focus,
+      .field.focus {
         border: solid 5px #969696;
       }
-      #portForm {
+
+      #configForm {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         flex-wrap: nowrap;
         justify-content: flex-start;
         align-content: stretch;
         align-items: center;
       }
+
       #error {
         color: #a94442;
         background-color: #f2dede;
@@ -92,6 +100,12 @@
       }
 
       .flexRow {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-content: stretch;
+        align-items: center;
         order: 0;
         flex: 0 1 auto;
         align-self: auto;
@@ -101,14 +115,22 @@
   </head>
   <body>
     <div id="container">
-      <div class="flexRow" id="launch">
-        <strong>Launch V8 Inspector</strong>
-      </div>
-      <form id="portForm" class="flexRow">
-        <label for="port">Port:</label>
-        <input type="number" id="port" value="9229" autocomplete="off" placeholder="9229" />
+      <form id="configForm">
+        <div class="flexRow">
+          <div id="launch">
+            <strong>Launch V8 Inspector</strong>
+          </div>
+        </div>
+        <div class="flexRow">
+          <label for="port">Port:</label>
+          <input type="number" class="field" id="port" value="9229" autocomplete="off" placeholder="9229" />
+        </div>
+        <div class="flexRow">
+          <label for="host">Host:</label>
+          <input id="host" class="field" value="localhost" autocomplete="off" placeholder="localhost" />
+        </div>
+        <div id="error" class="flexRow"></div>
       </form>
-      <div id="error" class="flexRow"></div>
     </div>
     <script src="src.js"></script>
   </body>
