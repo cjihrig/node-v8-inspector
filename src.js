@@ -18,20 +18,29 @@ document.addEventListener('DOMContentLoaded', function onLoad() {
 
         return response.json();
       })
-      .then(function getId (data) {
+      .then(function getIds (data) {
         try {
-          return data[0].devtoolsFrontendUrl.match(/\/(@\w+)\//)[1];
+          const hash = data[0].devtoolsFrontendUrl.match(/\/(@\w+)\//)[1];
+          let path = data[0].id;
+
+          // Node v6.9.0 added a UUID for security purposes. Prior to that,
+          // this was just a number, and the path was "node".
+          if (path.indexOf('-') === -1) {
+            path = 'node';
+          }
+
+          return { hash, path };
         } catch (err) {
           throw new Error(
             `Invalid devtools URL in ${JSON.stringify(data, null, 2)}`
           );
         }
       })
-      .then(function openInspector (id) {
+      .then(function openInspector (ids) {
         const url = `chrome-devtools://devtools/remote/serve_file/` +
-                    `${id}/inspector.html` +
+                    `${ids.hash}/inspector.html` +
                     `?experiments=true&v8only=true` +
-                    `&ws=${hostValue}:${portValue}/node`;
+                    `&ws=${hostValue}:${portValue}/${ids.path}`;
 
         chrome.tabs.create({ url });
       })
