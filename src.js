@@ -42,7 +42,9 @@ document.addEventListener('DOMContentLoaded', function onLoad() {
                     `?experiments=true&v8only=true` +
                     `&ws=${hostValue}:${portValue}/${ids.path}`;
 
-        chrome.tabs.create({ url });
+        chrome.tabs.create({active: false}, (tab) => {
+            chrome.tabs.update(tab.id, {url, active:true});
+        });
       })
       .catch(function errorHandler (err) {
         error.innerHTML = `Could not launch debugger<br>${err.message}`;
