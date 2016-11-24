@@ -1,4 +1,4 @@
-![node-v8-inspector](https://github.com/continuationlabs/node-v8-inspector/raw/master/logo128.png)
+![node-v8-inspector](https://github.com/continuationlabs/node-v8-inspector/raw/master/images/logo128.png)
 
 # node-v8-inspector
 

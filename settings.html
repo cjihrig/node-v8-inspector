@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Node.js V8 Inspector Settings</title>
+    <style type="text/css">
+      * {
+        box-sizing: border-box;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Node.js V8 Inspector Settings</h2>
+    <div>
+      <div>
+        Port:
+        <input type="number" id="port" autocomplete="off" />
+      </div>
+      <div>
+        Host:
+        <input id="host" autocomplete="off" />
+      </div>
+      <div>
+        <input type="checkbox" id="defaults" autocomplete="off" />
+        Quick launch using default settings
+      </div>
+      <div>
+        <button id="save">Save</button>
+      </div>
+    </div>
+    <script src="js/common.js"></script>
+    <script src="js/settings.js"></script>
+  </body>
+</html>
