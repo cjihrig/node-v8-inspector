@@ -2,30 +2,29 @@
 <html>
   <head>
     <title>Node.js V8 Inspector Settings</title>
-    <style type="text/css">
-      * {
-        box-sizing: border-box;
-      }
-    </style>
+    <link rel="stylesheet" href="css/style.css"></link>
   </head>
   <body>
-    <h2>Node.js V8 Inspector Settings</h2>
-    <div>
-      <div>
-        Port:
-        <input type="number" id="port" autocomplete="off" />
-      </div>
-      <div>
-        Host:
-        <input id="host" autocomplete="off" />
-      </div>
-      <div>
-        <input type="checkbox" id="defaults" autocomplete="off" />
-        Quick launch using default settings
-      </div>
-      <div>
-        <button id="save">Save</button>
-      </div>
+    <div class="container">
+      <h2 style="text-align:center">Node.js V8 Inspector Settings</h2>
+      <form>
+        <div class="flexRow">
+          <label for="port" class="form-label">Port:</label>
+          <input id="port" type="number" class="field"  autocomplete="off" />
+        </div>
+        <div class="flexRow">
+          <label for="host" class="form-label">Host:</label>
+          <input id="host" type="text" class="field" autocomplete="off" />
+        </div>
+        <div class="flexRow">
+          <label>Quick launch using default settings<input type="checkbox" id="defaults" /></label>
+        </div>
+        <div class="flexRow">
+          <div id="save" class="button">
+            <strong>Save</strong>
+          </div>
+        </div>
+      </form>
     </div>
     <script src="js/common.js"></script>
     <script src="js/settings.js"></script>

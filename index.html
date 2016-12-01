@@ -2,130 +2,21 @@
 <html>
   <head>
     <title>Node.js V8 Inspector</title>
-    <style type="text/css">
-      * {
-        box-sizing: border-box;
-      }
-
-      body {
-        min-width: 300px;
-        font-size: 18px;
-      }
-
-      input {
-        display: block;
-        margin: 0;
-        font-family: sans-serif;
-        font-size: 18px;
-        appearance: none;
-        box-shadow: none;
-        border-radius: none;
-        width: 75%;
-      }
-      input:focus {
-        outline: none;
-      }
-      input::-webkit-inner-spin-button,
-      input::-webkit-outer-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-      }
-
-      label {
-        margin-right: 15px;
-        font-size: 20px;
-        width: 25%;
-      }
-
-      #container {
-        margin: 20px auto;
-        border: 1px solid rgba(0, 0, 0, 0.15);
-        padding: 10px;
-        display: flex;
-        flex-direction: column;
-        flex-wrap: nowrap;
-        justify-content: center;
-        align-content: flex-start;
-        align-items: stretch;
-        max-width: 800px;
-      }
-
-      #launch {
-        background: #3498db;
-        background-image: linear-gradient(to bottom, #3498db, #2980b9);
-        box-shadow: 0px 1px 3px #666666;
-        color: #ffffff;
-        font-size: 20px;
-        padding: 10px 20px 10px 20px;
-        text-decoration: none;
-        text-align: center;
-        cursor: pointer;
-      }
-      #launch:hover {
-        background: #3cb0fd;
-        background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
-        text-decoration: none;
-      }
-
-      .field {
-        padding: 10px;
-        border: solid 5px #c9c9c9;
-        transition: border 0.3s;
-        flex: 1 1 auto;
-      }
-      .field:focus,
-      .field.focus {
-        border: solid 5px #969696;
-      }
-
-      #configForm {
-        display: flex;
-        flex-direction: column;
-        flex-wrap: nowrap;
-        justify-content: flex-start;
-        align-content: stretch;
-        align-items: center;
-      }
-
-      #error {
-        color: #a94442;
-        background-color: #f2dede;
-        border-color: #ebcccc;
-        padding: 15px;
-        margin-bottom: 1rem;
-        border: 1px solid transparent;
-        border-radius: .25rem;
-        display: none;
-        flex: 1 1 auto;
-      }
-
-      .flexRow {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        justify-content: flex-start;
-        align-content: stretch;
-        align-items: center;
-        order: 0;
-        flex: 0 1 auto;
-        align-self: auto;
-        margin: 5px;
-      }
-    </style>
+    <link rel="stylesheet" href="css/style.css"></link>
   </head>
   <body>
-    <div id="container">
-      <form id="configForm">
+    <div class="container">
+      <form>
         <div class="flexRow">
-          <label for="port">Port:</label>
-          <input type="number" class="field" id="port" autocomplete="off" />
+          <label for="port" class="form-label">Port:</label>
+          <input id="port" type="number" class="field"  autocomplete="off" />
         </div>
         <div class="flexRow">
-          <label for="host">Host:</label>
-          <input id="host" class="field" autocomplete="off" />
+          <label for="host" class="form-label">Host:</label>
+          <input id="host" type="text" class="field" autocomplete="off" />
         </div>
         <div class="flexRow">
-          <div id="launch">
+          <div id="launch" class="button">
             <strong>Launch V8 Inspector</strong>
           </div>
         </div>
@@ -133,6 +24,6 @@
       </form>
     </div>
     <script src="js/common.js"></script>
-    <script src="js/src.js"></script>
+    <script src="js/main.js"></script>
   </body>
 </html>
