@@ -48,6 +48,14 @@ function launchDevTools (options) {
       return response.json();
     })
     .then(function openInspector (data) {
-      chrome.tabs.create({ url: data[0].devtoolsFrontendUrl });
+      let devtoolsFrontendUrl = data && data[0] && data[0].devtoolsFrontendUrl;
+      if (typeof devtoolsFrontendUrl !== 'string') {
+        throw new Error('Not found devtools front-end url');
+      }
+      if (options.host !== 'localhost') {
+        devtoolsFrontendUrl = devtoolsFrontendUrl.replace(/ws=localhost:\d+/g,
+          `ws=${options.host}:${options.port}`);
+      }
+      chrome.tabs.create({ url: devtoolsFrontendUrl });
     });
 }
