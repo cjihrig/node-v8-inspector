@@ -52,6 +52,8 @@ function launchDevTools (options) {
       if (typeof devtoolsFrontendUrl !== 'string') {
         throw new Error('Not found devtools front-end url');
       }
+      devtoolsFrontendUrl = devtoolsFrontendUrl.replace('https://chrome-devtools-frontend.appspot.com',
+        'chrome-devtools://devtools/remote')
       if (options.host !== 'localhost') {
         devtoolsFrontendUrl = devtoolsFrontendUrl.replace(/ws=localhost:\d+/g,
           `ws=${options.host}:${options.port}`);
