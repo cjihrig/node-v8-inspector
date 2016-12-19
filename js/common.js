@@ -48,6 +48,24 @@ function launchDevTools (options) {
       return response.json();
     })
     .then(function openInspector (data) {
-      chrome.tabs.create({ url: data[0].devtoolsFrontendUrl });
+      // The replace is for older versions. For newer versions, it is a no-op.
+      const devtoolsFrontendUrl = data[0].devtoolsFrontendUrl.replace(
+        /^https:\/\/chrome-devtools-frontend\.appspot\.com/i,
+        'chrome-devtools://devtools/remote'
+      );
+
+      const url = new URL(devtoolsFrontendUrl);
+      const wsUrl = new URL(data[0].webSocketDebuggerUrl);
+
+      // Update the WebSocket URL with the host and port options. Then, update
+      // the DevTools URL with the new WebSocket URL. Also strip the protocol.
+      wsUrl.hostname = options.host;
+      wsUrl.port = options.port;
+      url.searchParams.set('ws', wsUrl.toString().replace('ws://', ''));
+
+      chrome.tabs.create({
+        // Without decoding 'ws', DevTools won't load the source files properly.
+        url: decodeURIComponent(url.toString())
+      });
     });
 }
