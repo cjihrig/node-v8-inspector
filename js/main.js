@@ -8,7 +8,11 @@ document.addEventListener('DOMContentLoaded', function onLoad() {
     port.placeholder = options.port;
 
     launch.addEventListener('click', function onClick() {
-      const settings = { host: host.value, port: port.value };
+      const settings = {
+        host: host.value,
+        port: port.value,
+        poll: options.poll
+      };
 
       error.style.display = 'none';
       launchDevTools(settings)

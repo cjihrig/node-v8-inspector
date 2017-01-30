@@ -17,7 +17,7 @@
     "48": "images/logo48.png",
     "128": "images/logo128.png"
   },
-  "permissions": ["http://*/", "storage"],
+  "permissions": ["http://*/", "storage", "notifications"],
   "options_page": "settings.html",
   "commands": {
     "_execute_browser_action": {
