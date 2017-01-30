@@ -15,6 +15,12 @@ document.addEventListener('DOMContentLoaded', function onLoad () {
         defaults: defaults.checked
       }, function storeCb () {
         setBrowserClickAction();
+        // Update status to let user know options were saved.
+        let status = document.getElementById('saveStatus');
+        status.textContent = 'Options saved.';
+        setTimeout(function() {
+          status.textContent = 'Save';
+        }, 750);
       });
     }, false);
   });
