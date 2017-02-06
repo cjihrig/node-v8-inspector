@@ -12,12 +12,14 @@ document.addEventListener('DOMContentLoaded', function onLoad () {
     host.placeholder = options.host;
     port.value = options.port;
     port.placeholder = options.port;
+    poll.checked = options.poll;
     defaults.checked = options.defaults;
 
     save.addEventListener('click', function onClick () {
       storeOptions({
         host: host.value,
         port: port.value,
+        poll: poll.checked,
         defaults: defaults.checked
       }, function storeCb () {
         setBrowserClickAction();
