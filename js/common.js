@@ -46,7 +46,7 @@ function setBrowserClickAction () {
 
 function parseJson (response) {
   if (response.status !== 200) {
-    throw new Error(`Invalid configuration data at ${jsonUrl}`);
+    throw new Error(`Invalid configuration data at ${response.url}`);
   }
 
   return response.json();
