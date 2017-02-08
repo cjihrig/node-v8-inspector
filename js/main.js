@@ -14,12 +14,19 @@ document.addEventListener('DOMContentLoaded', function onLoad() {
         poll: options.poll
       };
 
-      error.style.display = 'none';
-      launchDevTools(settings)
-        .catch(function errorHandler (err) {
-          error.innerHTML = `Could not launch debugger<br>${err.message}`;
-          error.style.display = 'block';
-        });
+      if (options.poll === true) {
+        // If polling mode is enabled, send the work to the background page.
+        window.close();
+        chrome.runtime.sendMessage(settings);
+      } else {
+        error.style.display = 'none';
+
+        launchDevTools(settings)
+          .catch(function errorHandler (err) {
+            error.innerHTML = `Could not launch debugger<br>${err.message}`;
+            error.style.display = 'block';
+          });
+      }
     }, false);
   });
 }, false);
